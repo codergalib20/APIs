@@ -1,4 +1,6 @@
-const getAllTasks = (req, res) => { };
+const getAllTasks = (req, res) => {
+    res.send('get all tasks')
+};
 const createATask = (req, res) => { };
 const getATasks = (req, res) => { };
 const updateATask = (req, res) => { };
