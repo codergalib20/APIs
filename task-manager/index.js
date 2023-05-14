@@ -14,4 +14,13 @@ app.get('/', (req, res) => {
 // routers
 app.use('/api/v1/tasks', require('./routes/tasks/tasks.route')); // task router
 
-app.listen(5000, () => console.log(`Application running on http://localhost:5000`))
+const start = async () => {
+    try {
+        await connectDB();
+        app.listen(5000, () => console.log(`Application running on http://localhost:5000`))
+    } catch (err) {
+        console.error(err);
+    }
+}
+
+start();
