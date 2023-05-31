@@ -27,7 +27,7 @@ const updateATask = async (req, res) => {
         return res.status(404).json({ message: `Task not found of ${id}` });
     };
 };
-const deleteATask = async (req, res) => {
+const deleteATask = asyncWrapper(async (req, res) => {
     const id = req.params.id;
     const task = await Task.findOneAndDelete({ _id: id });
     if (!task) {
@@ -35,7 +35,7 @@ const deleteATask = async (req, res) => {
     };
     res.status(201).json({ message: `Task deleted ${id}`, id });
 
-};
+});
 
 
 module.exports = {
