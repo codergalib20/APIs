@@ -20,13 +20,13 @@ const getATasks = async (req, res) => {
     }
     res.status(201).json({ task })
 };
-const updateATask = async (req, res) => {
+const updateATask = asyncWrapper(async (req, res) => {
     const id = req.params.id;
     const task = await Task.findOneAndUpdate({ _id: id }, req.body, { new: true });
     if (!task) {
         return res.status(404).json({ message: `Task not found of ${id}` });
     };
-};
+});
 const deleteATask = asyncWrapper(async (req, res) => {
     const id = req.params.id;
     const task = await Task.findOneAndDelete({ _id: id });
