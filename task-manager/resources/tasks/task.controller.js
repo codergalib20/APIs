@@ -1,10 +1,44 @@
-const getAllTasks = (req, res) => {
-    res.send('get all tasks')
+const Task = require("./task.model");
+
+const getAllTasks = async (req, res) => {
+    try {
+        const tasks = await Task.find();
+        res.status(201).json({
+            data: tasks,
+            message: "Tasks loaded"
+        })
+    }
+    catch (err) {
+        res.status(404).json({ err })
+    }
 };
-const createATask = (req, res) => { };
-const getATasks = (req, res) => { };
-const updateATask = (req, res) => { };
-const deleteATask = (req, res) => { };
+const createATask = (req, res) => {
+    try {
+        const data = Task.create(req.body);
+        res.status(201).json({ message: "Task added", data });
+    }
+    catch (err) {
+        res.status(404).json({ message: "Server error", err })
+    }
+};
+const getATasks = (req, res) => {
+    try {
+        const id = req.params.id;
+    }
+    catch (err) { res.status(404).json({ message: "Server error", err }) }
+};
+const updateATask = (req, res) => {
+    try {
+        const id = req.params.id;
+    }
+    catch (err) { res.status(404).json({ message: "Server error", err }) }
+};
+const deleteATask = (req, res) => {
+    try {
+        const id = req.params.id;
+    }
+    catch (err) { res.status(404).json({ message: "Server error", err }) }
+};
 
 
 module.exports = {
