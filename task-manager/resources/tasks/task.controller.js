@@ -12,14 +12,14 @@ const createATask = async (req, res) => {
     const data = await Task.create(req.body);
     res.status(201).json({ message: "Task added", data });
 };
-const getATasks = async (req, res) => {
+const getATasks = asyncWrapper(async (req, res) => {
     const id = req.params.id;
     const task = await Task.findOne({ _id: id });
     if (!task) {
         return res.status(404).json({ message: `Task not found of ${id}` });
     }
     res.status(201).json({ task })
-};
+});
 const updateATask = asyncWrapper(async (req, res) => {
     const id = req.params.id;
     const task = await Task.findOneAndUpdate({ _id: id }, req.body, { new: true });
