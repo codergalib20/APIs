@@ -1,5 +1,5 @@
 const errorHandlerMiddleware = (err, req, res, next) => {
-    return res.status(500).json({ err });
+    return res.status(500).json({ msg: `Something went wrong` });
 };
 
-export default errorHandlerMiddleware;
+module.exports = errorHandlerMiddleware;

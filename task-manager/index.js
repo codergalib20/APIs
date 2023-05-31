@@ -1,6 +1,7 @@
 const express = require('express');
 const connectDB = require('./db/connect');
 const app = express();
+const errorHandlerMiddleware = require('./middlewares/error-handler');
 require('dotenv').config();
 
 // middleware
@@ -14,7 +15,7 @@ app.get('/', (req, res) => {
 
 // resources
 app.use('/api/v1/tasks', require('./resources/tasks/task.route')); // task router
-
+app.use(errorHandlerMiddleware)
 const start = async () => {
     try {
 
