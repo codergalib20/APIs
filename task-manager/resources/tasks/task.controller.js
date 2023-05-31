@@ -25,6 +25,9 @@ const getATasks = async (req, res) => {
     try {
         const id = req.params.id;
         const task = await Task.findOne({ _id: id });
+        if (!task) {
+            return res.status(404).json({ message: `Task not found of ${id}` });
+        }
         res.status(201).json({ task })
     }
     catch (err) { res.status(404).json({ message: "Server error", err }) }
