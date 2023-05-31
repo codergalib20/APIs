@@ -8,11 +8,11 @@ const getAllTasks = asyncWrapper(async (req, res) => {
         message: "Tasks loaded"
     })
 });
-const createATask = async (req, res) => {
+const createATask = asyncWrapper(async (req, res) => {
     const data = await Task.create(req.body);
     res.status(201).json({ message: "Task added", data });
-};
-const getATasks = asyncWrapper(async (req, res) => {
+});
+const getATask = asyncWrapper(async (req, res) => {
     const id = req.params.id;
     const task = await Task.findOne({ _id: id });
     if (!task) {
