@@ -43,9 +43,11 @@ const updateATask = async (req, res) => {
     }
     catch (err) { res.status(404).json({ message: "Server error", err }) }
 };
-const deleteATask = (req, res) => {
+const deleteATask = async (req, res) => {
     try {
         const id = req.params.id;
+        const task = await Task.findOneAndDelete({_id: id});
+
     }
     catch (err) { res.status(404).json({ message: "Server error", err }) }
 };
