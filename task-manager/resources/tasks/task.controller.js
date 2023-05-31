@@ -21,9 +21,11 @@ const createATask = (req, res) => {
         res.status(404).json({ message: "Server error", err })
     }
 };
-const getATasks = (req, res) => {
+const getATasks = async (req, res) => {
     try {
         const id = req.params.id;
+        const task = await Task.findOne({ _id: id });
+        res.status(201).json({ task })
     }
     catch (err) { res.status(404).json({ message: "Server error", err }) }
 };
