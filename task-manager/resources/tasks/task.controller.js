@@ -41,7 +41,7 @@ const deleteATask = asyncWrapper(async (req, res) => {
 module.exports = {
     getAllTasks,
     createATask,
-    getATasks,
+    getATask,
     updateATask,
     deleteATask
 }

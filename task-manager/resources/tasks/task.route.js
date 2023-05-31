@@ -3,7 +3,7 @@ const { createATask, deleteATask, getATasks, getAllTasks, updateATask } = requir
 const router = express.Router();
 
 router.route('/').get(getAllTasks).post(createATask);
-router.route('/:id').get(getATasks).patch(updateATask).delete(deleteATask);
+router.route('/:id').get(getATask).patch(updateATask).delete(deleteATask);
 
 
 
