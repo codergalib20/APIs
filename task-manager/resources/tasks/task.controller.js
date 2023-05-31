@@ -1,6 +1,7 @@
 const Task = require("./task.model");
+const asyncWrapper = require('../../utils/asyncWrapper');
 
-const getAllTasks = async (req, res) => {
+const getAllTasks = asyncWrapper(async (req, res) => {
     try {
         const tasks = await Task.find();
         res.status(201).json({
@@ -11,7 +12,7 @@ const getAllTasks = async (req, res) => {
     catch (err) {
         res.status(404).json({ err })
     }
-};
+});
 const createATask = (req, res) => {
     try {
         const data = Task.create(req.body);
